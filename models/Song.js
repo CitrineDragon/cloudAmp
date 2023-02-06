@@ -7,23 +7,31 @@ const SongSchema = new mongoose.Schema({
   },
   album: {
     type: String,
-    required: true,
+    required: false,
   },
   artist: {
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    require: false,
-  },
   duration: {
     type: Number,
     required: false,
   },
+  songURL: {
+    type: String,
+    required: true,
+  },
+  imageURL: {
+    type: String,
+    required: false,
+  },
   cloudinaryId: {
     type: String,
-    require: true,
+    required: true,
+  },
+  cloudinaryImageId: {
+    type: String,
+    required: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

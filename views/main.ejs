@@ -1,0 +1,30 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-6"></div>
+    <a href="http://localhost:9001/upload">Upload</a>
+    <div class="col-3 mt-5"></div>
+
+    <div>
+      <ul>
+      <% for(var i=0; i<songs.length; i++) {%>
+        <section class="audioTracks">
+          <i class="fa-solid fa-play"></i>
+          <img class="trackCoverArt" src="<%= songs[i].imageURL%>">
+          <p class="trackTitle"><%= songs[i].title%></p>
+          <!-- <audio controls src="<%= songs[i].songURL%>"></audio> -->
+          <p class="trackArtist"><%= songs[i].artist%></p>
+          <p class="albumTitle"><%= songs[i].album%></p>
+          <p class="trackDuration">
+            <% let minutes = Math.floor(songs[i].duration / 60) %>
+            <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
+            <%= `${minutes}:${seconds}` %>
+          </p>
+        </section>
+      <% } %>
+      </ul> 
+    </div> 
+  </div>
+</div>
+
+<%- include('partials/footer') -%>
