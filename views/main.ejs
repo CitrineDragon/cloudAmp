@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6"></div>
-    <a href="http://localhost:9001/upload">Upload</a>
+    <a href="/upload">Upload</a>
     <div class="col-3 mt-5"></div>
 
     <div>
@@ -18,7 +18,7 @@
           <p class="trackDuration">
             <% let minutes = Math.floor(songs[i].duration / 60) %>
             <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
-            <%= `${minutes}:${seconds}` %>
+            <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
           </p>
         </section>
       <% } %>
