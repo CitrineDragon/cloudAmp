@@ -1,4 +1,7 @@
+<script defer src="../public/js/helper.js"></script>
+
 <%- include('partials/header') -%>
+
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6"></div>
@@ -43,18 +46,17 @@
         <img src="<%= songs[songIndex].imageURL%>" alt="music-cover" id="cover" />
       </div>
       <div class="navigation">
-        <button id="prev" class="action-btn">
+        <button id="prev" class="action-btn prev">
           <i class="fas fa-backward"></i>
         </button>
-        <button id="play" class="action-btn action-btn-big">
+        <button id="play" class="action-btn action-btn-big play">
           <i class="fas fa-play"></i>
         </button>
-        <button id="next" class="action-btn">
+        <button id="next" class="action-btn next">
           <i class="fas fa-forward"></i>
         </button>
       </div>
     </div>
-
 
 
   </div>
