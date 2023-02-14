@@ -1,65 +1,97 @@
-<script defer src="../public/js/helper.js"></script>
+<script defer src="js/helper.js"></script>
 
 <%- include('partials/header') -%>
 
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6"></div>
-    <a href="/upload">Upload</a>
-    <div class="col-3 mt-5"></div>
-    
-    <% let songIndex = 2 %>
-    <!-- Music Tracks -->
-    <div>
-      <ul>
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">CloudAmp</a>
+    <div class="navbar-nav d-flex flex-row-reverse px-2">
+      <a class="btn btn-outline-light mx-2" href="/logout">Sign Out</a>
+      <a class="btn btn-outline-light mx-2" href="/profile">Profile</a>
+      <a class="btn btn-outline-light mx-2" href="/upload">Upload</a>
+      <span class="navbar-text text-light mx-2 text-capitalize"><%= user.userName %></span>
+    </div>
+  </div>
+</nav>
+
+<% let songIndex = 2 %>
+
+<!-- Hero -->
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center first hero bg-primary bg-gradient text-light">
+  <h2>CloudAmp</h2>
+  <p>Your Music, Anywhere!</p>
+</div>
+
+
+<!-- Table -->
+<div class="container-fluid g-0 table-responsive">
+  <table class="table table-dark table-striped table-hover align-middle">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 10%"></th>
+        <th scope="col" style="width: 26.66%">Title</th>
+        <th scope="col" style="width: 26.66%">Artist</th>
+        <th scope="col" style="width: 26.66%">Album</th>
+        <th scope="col" style="width: 10%">Duration</th>
+      </tr>
+    </thead>
+    <tbody>
       <% for(var i=0; i<songs.length; i++) {%>
-        <section class="audioTracks">
-          <i class="fa-solid fa-play"></i>
-          <img class="trackCoverArt" src="<%= songs[i].imageURL%>">
-          <p class="trackTitle"><%= songs[i].title %></p>
-          <!-- <audio controls src="<%= songs[i].songURL%>"></audio> -->
-          <p class="trackArtist"><%= songs[i].artist%></p>
-          <p class="albumTitle"><%= songs[i].album%></p>
-          <p class="trackDuration">
+        <tr>
+          <th scope="row"><img class="trackCoverArt ms-2" src="<%= songs[i].imageURL%>"></th>
+          <td><%= songs[i].title %></td>
+          <td><%= songs[i].artist%></td>
+          <td><%= songs[i].album%></td>
+          <td>
             <% let minutes = Math.floor(songs[i].duration / 60) %>
             <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
             <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
-          </p>
-        </section>
+          </td>
+        </tr>
       <% } %>
-      </ul> 
-    </div>
-
-    <!-- Music Player -->
-    <div class="music-container" id="music-container">
-      <div class="music-info">
-        <p class="title"><%= songs[songIndex].title %></p>
-        <p class="artist"><%= songs[songIndex].artist%></p>
-        <div class="progress-container" id="progress-container">
-          <div class="progress" id="progress"></div>
-        </div>
-      </div>
-
-      <audio src="<%= songs[songIndex].songURL%>" id="audio"></audio>
-
-      <div class="img-container">
-        <img src="<%= songs[songIndex].imageURL%>" alt="music-cover" id="cover" />
-      </div>
-      <div class="navigation">
-        <button id="prev" class="action-btn prev">
-          <i class="fas fa-backward"></i>
-        </button>
-        <button id="play" class="action-btn action-btn-big play">
-          <i class="fas fa-play"></i>
-        </button>
-        <button id="next" class="action-btn next">
-          <i class="fas fa-forward"></i>
-        </button>
-      </div>
-    </div>
-
-
-  </div>
+    </tbody>
+  </table>
 </div>
+  
+
+<!-- Music Player -->
+<div class="container-fluid player">
+  <!-- Progress Bar -->
+  <div class="progress-container" id="progress-container">
+    <div class="progress" id="progress">Progess Bar</div>
+  </div>
+
+  <div class="d-flex flex-row text-light">
+    <!-- Track Img & Details -->
+    <div class="playerDetails d-flex pt-3">
+      <img src="<%= songs[songIndex].imageURL%>" alt="music-cover" id="cover" />
+      <div class="trackDetails d-flex flex-column justify-content-end">
+        <span class="title"><%= songs[songIndex].title %></span>
+        <span class="artist"><%= songs[songIndex].artist%></span>
+      </div>
+    </div>
+    
+    <!-- <audio src="<%= songs[songIndex].songURL%>" id="audio"></audio> -->
+    
+    <!-- Player Controls -->
+    <div class="playerControls d-flex justify-content-center align-items-center pt-3">
+      <button id="prev" class="playerBtn btn btn-outline-primary prev shadow-none mx-1">
+        <i class="fas fa-backward"></i>
+      </button>
+      <button id="play" class="playerBtn btn btn-outline-primary play shadow-none mx-1">
+        <i class="fas fa-play"></i>
+      </button>
+      <button id="next" class="playerBtn btn btn-outline-primary next shadow-none mx-1">
+        <i class="fas fa-forward"></i>
+      </button>
+    </div>
+    
+  </div>
+
+</div>
+
+
+  
+
 
 <%- include('partials/footer') -%>

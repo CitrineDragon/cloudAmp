@@ -7,6 +7,7 @@ const MongoStore = require('connect-mongo')(session);
 const methodOverride = require('method-override');
 const flash = require('express-flash');
 const logger = require('morgan');
+const cors = require('cors');
 const connectDB = require('./config/database');
 const mainRoutes = require('./routes/main');
 const songRoutes = require('./routes/songs');
@@ -26,6 +27,9 @@ app.set('view engine', 'ejs');
 
 //Static Folder
 app.use(express.static('public'));
+
+//Use Cors
+app.use(cors());
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));

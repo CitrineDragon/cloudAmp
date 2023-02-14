@@ -53,6 +53,6 @@ function test() {
   console.log('This works');
 }
 
-play.addEventListener('click', test);
-prev.addEventListener('click', test);
-next.addEventListener('click', test);
+playBtn.addEventListener('click', test);
+prevBtn.addEventListener('click', test);
+nextBtn.addEventListener('click', test);

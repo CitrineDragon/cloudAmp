@@ -1,6 +1,15 @@
 <%- include('partials/header') -%>
 
-<main class="container">
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">CloudAmp</a>
+    <div class="navbar-nav d-flex flex-row-reverse px-2">
+      <a class="btn btn-outline-light mx-2" href="/signup">Signup</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container first">
   <div class="row justify-content-center">
     <section class="col-6 mt-5">
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>

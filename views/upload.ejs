@@ -1,31 +1,50 @@
 <%- include('partials/header') -%>
 <div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
-          <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+  <nav class="navbar fixed-top navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">CloudAmp</a>
+      <div class="navbar-nav d-flex flex-row-reverse px-2">
+        <a class="btn btn-outline-light mx-2" href="/logout">Sign Out</a>
+        <a class="btn btn-outline-light mx-2" href="/profile">Profile</a>
+        <a class="btn btn-outline-light mx-2" href="/main">Home</a>
+        <span class="navbar-text text-light mx-2 text-capitalize"
+          ><%= user.userName %></span
+        >
+      </div>
+    </div>
+  </nav>
+
+  <div class="row mt-5 first text-light">
+    <div class="col-6">
+      <div class="mt-5">
+        <h2>Add a song</h2>
+        <form
+          action="/upload/createSong"
+          enctype="multipart/form-data"
+          method="POST"
+        >
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" />
           </div>
-          <div class="mt-5">
-            <h2>Add a song</h2>
-            <form action="/upload/createSong" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-              </div>
-              <div class="mb-3">
-                <label for="artist" class="form-label">Artist</label>
-                <textarea class="form-control" id="artist" name="artist"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="songUpload" class="form-label">Song</label>
-                <input type="file" class="form-control" id="songUpload" name="file">
-              </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-            </form>
+          <div class="mb-3">
+            <label for="artist" class="form-label">Artist</label>
+            <textarea class="form-control" id="artist" name="artist"></textarea>
           </div>
-      </div> 
+          <div class="mb-3">
+            <label for="songUpload" class="form-label">Song</label>
+            <input
+              type="file"
+              class="form-control"
+              id="songUpload"
+              name="file"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary" value="Upload">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
