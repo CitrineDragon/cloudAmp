@@ -12,8 +12,6 @@ let cDur = document.querySelector('.cDur');
 let mDur = document.querySelector('.mDur');
 let volume = document.querySelector('.form-range');
 
-console.log(songList);
-
 // Keep track of song index
 let songIndex = 0;
 
@@ -26,6 +24,7 @@ function playSong() {
   image.src =
     songList[songIndex]?.imageURL ||
     'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg';
+  progressBar.setAttribute('aria-valuemax', songList[songIndex].duration);
   title.innerHTML = songList[songIndex]?.title || 'Unknown';
   artist.innerHTML = songList[songIndex]?.artist || 'Unknown';
   audio.play();
@@ -77,7 +76,6 @@ function nextSong() {
     'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg';
   title.innerHTML = songList[songIndex]?.title || 'Unknown';
   artist.innerHTML = songList[songIndex]?.artist || 'Unknown';
-
   playSong();
 }
 
@@ -89,8 +87,6 @@ function timeUpdate() {
   let dMins = Math.floor(songList[songIndex].duration / 60);
   let dSecs = (songList[songIndex].duration - dMins * 60).toFixed();
   let dTimeOuput = `${dMins}:${dSecs < 10 ? '0' + dSecs : dSecs}`;
-
-  // console.log(((audio.currentTime / audio.duration) * 100).toFixed(2));
 
   cDur.innerHTML = timeOutput;
   mDur.innerHTML = dTimeOuput;
@@ -115,7 +111,6 @@ function volumeUpdate(e) {
 
 function getIndex(x) {
   songIndex = x.rowIndex - 1;
-  console.log(songIndex, x);
   playSong();
 }
 
