@@ -1,4 +1,4 @@
-<script defer src="js/helper.js"></script>
+<script defer src="/js/helper.js"></script>
 
 <%- include('partials/header') -%>
 
@@ -14,7 +14,7 @@
   </div>
 </nav>
 
-<% let songIndex = 2 %>
+<% let songIndex = 0 %>
 
 <!-- Hero -->
 <div class="container-fluid d-flex flex-column justify-content-center align-items-center first hero bg-primary bg-gradient text-light">
@@ -24,29 +24,31 @@
 
 
 <!-- Table -->
-<div class="container-fluid g-0 table-responsive">
+<div class="container-fluid g-0 table-responsive library">
   <table class="table table-dark table-striped table-hover align-middle">
     <thead>
       <tr>
         <th scope="col" style="width: 10%"></th>
-        <th scope="col" style="width: 26.66%">Title</th>
-        <th scope="col" style="width: 26.66%">Artist</th>
-        <th scope="col" style="width: 26.66%">Album</th>
+        <th scope="col" style="width: 25%">Title</th>
+        <th scope="col" style="width: 25%">Artist</th>
+        <th scope="col" style="width: 25%">Album</th>
         <th scope="col" style="width: 10%">Duration</th>
+        <th scope="col" style="width: 5%"></th>
       </tr>
     </thead>
     <tbody>
       <% for(var i=0; i<songs.length; i++) {%>
-        <tr>
-          <th scope="row"><img class="trackCoverArt ms-2" src="<%= songs[i].imageURL%>"></th>
-          <td><%= songs[i].title %></td>
-          <td><%= songs[i].artist%></td>
-          <td><%= songs[i].album%></td>
-          <td>
+        <tr onclick="getIndex(this)">
+          <th scope="row" class="py-1"><img class="trackCoverArt ms-2" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></th>
+          <td class="py-1"><%= songs[i].title %></td>
+          <td class="py-1"><%= songs[i].artist%></td>
+          <td class="py-1"><%= songs[i].album%></td>
+          <td class="py-1">
             <% let minutes = Math.floor(songs[i].duration / 60) %>
             <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
             <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
           </td>
+          <td class="py-1"><a href="/delete/<%= songs[i]._id %>" title="delete" class="me-2" ><i class="fa-solid fa-trash text-light"></i></a></td>
         </tr>
       <% } %>
     </tbody>
@@ -55,37 +57,50 @@
   
 
 <!-- Music Player -->
-<div class="container-fluid player">
-  <!-- Progress Bar -->
-  <div class="progress-container" id="progress-container">
-    <div class="progress" id="progress">Progess Bar</div>
+<div class="player container-fluid pt-3" data-songs="<%= JSON.stringify(songs) %>">
+  <div class="progressSection d-flex justify-content-center align-items-center">
+    <!-- Current Time -->
+    <span class="cDur text-light me-2">0:00</span>
+    <!-- Progress Bar -->
+    <span class="progress">
+      <span class="progress-bar" role="progressbar" title="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="<%= songs[songIndex]?.duration || 0 %>"></span>
+    </span>
+    <!-- Max Duration -->
+    <span class="mDur text-light ms-2">0:00</span>
   </div>
+  
 
-  <div class="d-flex flex-row text-light">
+  <div class="d-flex justify-content-between text-light mt-1">
     <!-- Track Img & Details -->
-    <div class="playerDetails d-flex pt-3">
-      <img src="<%= songs[songIndex].imageURL%>" alt="music-cover" id="cover" />
-      <div class="trackDetails d-flex flex-column justify-content-end">
-        <span class="title"><%= songs[songIndex].title %></span>
-        <span class="artist"><%= songs[songIndex].artist%></span>
+    <div class="playerDetails d-flex">
+      <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover id="cover" />
+      <div class="trackDetails d-flex flex-column align-items-start justify-content-center ">
+        <span class="title ps-2"><%= songs[songIndex]?.title || 'None' %></span>
+        <span class="artist ps-2"><%= songs[songIndex]?.artist || 'None'%></span>
       </div>
     </div>
     
-    <!-- <audio src="<%= songs[songIndex].songURL%>" id="audio"></audio> -->
+    <audio src="<%= songs[songIndex]?.songURL || ''%>" id="audio"></audio>
     
     <!-- Player Controls -->
-    <div class="playerControls d-flex justify-content-center align-items-center pt-3">
-      <button id="prev" class="playerBtn btn btn-outline-primary prev shadow-none mx-1">
+    <div class="playerControls d-flex justify-content-center align-items-center">
+      <button id="prev" class="playerBtn btn btn-primary prev shadow-none mx-1" title="Previous Track">
         <i class="fas fa-backward"></i>
       </button>
-      <button id="play" class="playerBtn btn btn-outline-primary play shadow-none mx-1">
+      <button id="play" class="playerBtn btn btn-primary play shadow-none mx-1" title="Play Track">
         <i class="fas fa-play"></i>
       </button>
-      <button id="next" class="playerBtn btn btn-outline-primary next shadow-none mx-1">
+      <button id="next" class="playerBtn btn btn-primary next shadow-none mx-1" title="Next Track">
         <i class="fas fa-forward"></i>
       </button>
     </div>
-    
+
+    <!-- Volume Control -->
+    <div class="volumeControl d-flex justify-content-end align-items-center text-light">
+      <i class="fa-solid fa-volume-high text-light pe-2"></i>
+      <label for="volumeRange" class="form-label"></label>
+      <input type="range" class="form-range" min="0" max="100" step="1" id="volumeRange" name="volumeRange" placeholder="">
+    </div>
   </div>
 
 </div>

@@ -31,10 +31,12 @@ module.exports = {
       await Song.create({
         title: metadata.common.title || req.body.title,
         artist: metadata.common.artist || req.body.artist,
-        album: metadata.common.album || 'unknown',
+        album: metadata.common.album || 'Unknown',
         duration: metadata.format.duration,
         songURL: result.secure_url,
-        imageURL: picUpload.secure_url,
+        imageURL:
+          picUpload.secure_url ||
+          'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg',
         cloudinaryId: result.public_id,
         cloudinaryImageId: picUpload.public_id,
         user: req.user.id,
@@ -43,6 +45,7 @@ module.exports = {
       res.redirect('/upload');
     } catch (err) {
       console.log(err);
+      res.redirect('/upload');
     }
   },
 };

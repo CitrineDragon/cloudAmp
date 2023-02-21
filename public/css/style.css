@@ -5,7 +5,13 @@
 }
 
 body {
+  position: relative;
   background-color: black;
+}
+
+img {
+  height: 50px;
+  width: 50px;
 }
 
 .first {
@@ -13,29 +19,55 @@ body {
 }
 
 .hero {
-  height: 40vh;
+  height: calc(100vh - (50vh + 166px));
 }
 
-.progress-container {
-  width: 100%;
+.library {
+  position: absolute;
+  background-color: #212529;
+  height: 50vh;
+  bottom: 110px;
+  left: 0;
 }
 
-.playerDetails {
-  width: 25%;
+.progress {
+  height: 16px;
+  width: 70%;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  border-radius: 7px;
 }
 
-.playerControls {
-  width: 50%;
+.progress:hover {
+  cursor: pointer;
 }
 
-img {
-  height: 50px;
-  width: 50px;
-  margin: 5px 5px 5px 0;
+.player {
+  position: absolute;
+  background-color: black;
+  height: 110px;
+  bottom: 0;
+  left: 0;
 }
 
 .playerBtn {
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   border-radius: 100%;
+}
+
+.playerDetails {
+  width: calc((100vw - 100px) / 2);
+}
+
+.playerControls {
+  width: 200px;
+}
+
+.volumeControl {
+  width: calc((100vw - 100px) / 2);
+}
+
+.form-range {
+  width: 110px;
 }
