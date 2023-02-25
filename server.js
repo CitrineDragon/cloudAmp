@@ -66,6 +66,6 @@ app.use('/upload', uploadRoutes);
 app.use('/delete', deleteRoutes);
 
 //Server Running
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log('Server is running, you better catch it!');
 });
