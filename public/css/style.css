@@ -22,6 +22,10 @@ img {
   width: 50px;
 }
 
+span {
+  min-width: 70px;
+}
+
 .navbar {
   background-color: #111 !important;
 }

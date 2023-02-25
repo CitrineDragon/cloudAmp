@@ -57,7 +57,7 @@
             <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
             <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
           </span>
-          <span class="col-1 py-1 border-bottom border-light d-flex align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="" ><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
+          <span class="col-1 py-1 border-bottom border-light d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="" ><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
         </div>
       <% } %>
   </div>
