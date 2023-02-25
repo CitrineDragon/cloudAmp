@@ -53,6 +53,11 @@ span {
   overflow-y: auto;
 }
 
+.songDiv {
+  padding: 0;
+  margin: 0;
+}
+
 .songDiv:hover {
   cursor: pointer;
 }
@@ -63,6 +68,10 @@ span {
   border-top: 5px solid #111;
   border-bottom: 5px solid #111;
   border-radius: 7px;
+}
+
+.progress-bar {
+  background-color: red;
 }
 
 .progress:hover {

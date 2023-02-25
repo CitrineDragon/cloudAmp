@@ -42,7 +42,7 @@
       <span class="col text-center">Title</span>
       <span class="col text-center d-none d-lg-flex">Artist</span>
       <span class="col text-center d-none d-lg-flex">Album</span>
-      <span class="col-1 text-center d-none d-lg-flex">Duration</span>
+      <span class="col-1 text-center">Duration</span>
       <span class="col-1 text-center"></span>
   </div>
   <div class="songParent pb-5">
@@ -52,7 +52,7 @@
           <span class="col py-1 border-bottom border-light d-flex align-items-center"><%= songs[i].title %></span>
           <span class="col py-1 border-bottom border-light d-flex align-items-center d-none d-lg-flex"><%= songs[i].artist%></span>
           <span class="col py-1 border-bottom border-light d-flex align-items-center d-none d-lg-flex"><%= songs[i].album%></span>
-          <span class="col-1 py-1 border-bottom border-light d-flex justify-content-center align-items-center d-none d-lg-flex">
+          <span class="col-1 py-1 border-bottom border-light d-flex justify-content-center align-items-center">
             <% let minutes = Math.floor(songs[i].duration / 60) %>
             <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
             <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
@@ -65,13 +65,13 @@
   
 
 <!-- Music Player -->
-<div class="player container-fluid pt-3 position-absolute bottom-0 start-0 bg-dark" data-songs="<%= JSON.stringify(songs) %>">
+<div class="player container-fluid pt-3 position-absolute bottom-0 start-0" data-songs="<%= JSON.stringify(songs) %>">
   <div class="progressSection d-flex justify-content-center align-items-center">
     <!-- Current Time -->
     <span class="cDur text-end text-light me-2">0:00</span>
     <!-- Progress Bar -->
     <span class="progress">
-      <span class="progress-bar" role="progressbar" title="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="<%= songs[songIndex]?.duration || 0 %>"></span>
+      <span class="progress-bar" role="progressbar" title="" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="<%= songs[songIndex]?.duration || 0 %>"></span>
     </span>
     <!-- Max Duration -->
     <span class="mDur text-light ms-2">0:00</span>
