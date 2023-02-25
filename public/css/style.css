@@ -27,6 +27,8 @@ img {
 }
 
 .first {
+  content: '';
+  background-color: black;
   margin-top: 56px;
 }
 
