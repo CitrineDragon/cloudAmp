@@ -29,7 +29,7 @@ img {
 .first {
   content: '';
   background-color: black;
-  margin-top: 56px;
+  margin-top: 56px !important;
 }
 
 .hero {
