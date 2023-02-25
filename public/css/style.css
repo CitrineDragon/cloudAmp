@@ -76,18 +76,6 @@ img {
   border-radius: 100%;
 }
 
-/* .playerDetails {
-  width: calc((100vw - 100px) / 2);
-}
-
-.playerControls {
-  width: 200px;
-}
-
-.volumeControl {
-  width: calc((100vw - 100px) / 2);
-} */
-
 .form-range {
   width: 110px;
 }
@@ -102,7 +90,6 @@ img {
   position: relative;
   background-color: black;
   height: calc(100vh - 56px);
-  /* min-height: 25rem; */
   width: 100%;
   overflow: hidden;
 }
@@ -140,7 +127,7 @@ img {
 
 .video-background-overlay-2 {
   position: absolute;
-  top: 56px;
+  top: 0px;
   left: 0;
   height: calc(100vh - (50vh + 166px));
   width: 100%;
