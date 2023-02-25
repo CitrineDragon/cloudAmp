@@ -36,7 +36,7 @@ app.use(cors());
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json({ limit: '100mb' }));
+app.use(express.json());
 
 //Logging
 app.use(logger('dev'));

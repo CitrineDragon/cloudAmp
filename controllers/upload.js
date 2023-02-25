@@ -24,9 +24,7 @@ module.exports = {
             transformation: [{ width: 50, crop: 'scale' }],
           }
         );
-        console.log(picture, picUpload);
       }
-      console.log(metadata);
 
       await Song.create({
         title: metadata.common.title || req.body.title,
