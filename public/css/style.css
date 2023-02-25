@@ -139,3 +139,10 @@ span {
   opacity: 0.75;
   z-index: 1;
 }
+
+@media only screen and (max-width: 600px) {
+  .video-background-overlay-2 {
+    position: absolute;
+    top: 0px;
+  }
+}
