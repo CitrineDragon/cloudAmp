@@ -60,10 +60,10 @@ app.use(passport.session());
 app.use(flash());
 
 //Setup Routes For Which The Server Is Listening
-app.use('/api/', mainRoutes);
-app.use('/api/songs', songRoutes);
-app.use('/api/upload', uploadRoutes);
-app.use('/api/delete', deleteRoutes);
+app.use('/', mainRoutes);
+app.use('/songs', songRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/delete', deleteRoutes);
 
 //Server Running
 app.listen(process.env.PORT || 9001, () => {

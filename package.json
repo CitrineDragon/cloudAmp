@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --delay 500ms server.js"
   },
-  "author": "",
+  "author": "Citrine Dragon",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
