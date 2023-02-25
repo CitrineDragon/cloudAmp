@@ -40,7 +40,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log('Song has been added!');
-      res.redirect('/upload');
+      res.redirect('/main');
     } catch (err) {
       console.log(err);
       res.redirect('/upload');
