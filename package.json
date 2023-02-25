@@ -4,9 +4,9 @@
   "description": "Starter template for future projects",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --delay 500ms server.js"
+    "dev": "nodemon --delay 500ms index.js"
   },
   "author": "",
   "license": "MIT",
