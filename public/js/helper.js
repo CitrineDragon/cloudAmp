@@ -12,6 +12,7 @@ let cDur = document.querySelector('.cDur');
 let mDur = document.querySelector('.mDur');
 let volume = document.querySelector('.form-range');
 let songParent = document.querySelector('.songParent');
+let audio = document.getElementById('audio');
 
 // Keep track of song index
 let songIndex = 0;
@@ -121,6 +122,7 @@ function songDivIndex(div) {
 }
 
 playBtn.addEventListener('click', playPause);
+audio.addEventListener('ended', nextSong);
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 audio.addEventListener('timeupdate', timeUpdate);
