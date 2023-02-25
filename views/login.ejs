@@ -9,7 +9,7 @@
   </div>
 </nav>
 
-<main class="container-fluid first">
+<main class="first container-fluid text-light">
   <div class="row justify-content-center">
     <section class="col-4 mt-5">
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
@@ -40,7 +40,7 @@
             name="password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="pill btn btn-primary">Submit</button>
       </form>
     </section>
   </div>

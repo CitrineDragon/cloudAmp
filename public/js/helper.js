@@ -40,7 +40,9 @@ function pauseSong() {
 
 function playPause() {
   if (playBtn.querySelector('i.fas').classList.contains('fa-play')) {
-    playSong();
+    playBtn.querySelector('i.fas').classList.remove('fa-play');
+    playBtn.querySelector('i.fas').classList.add('fa-pause');
+    audio.play();
   } else {
     pauseSong();
   }
@@ -108,11 +110,6 @@ function progressUpdate(e) {
 
 function volumeUpdate(e) {
   audio.volume = e.currentTarget.value / 100;
-}
-
-function getIndex(x) {
-  songIndex = x.rowIndex - 1;
-  playSong();
 }
 
 function songDivIndex(div) {
