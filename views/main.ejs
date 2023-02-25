@@ -9,7 +9,7 @@
       <a class="pill btn btn-outline-light mx-2" href="/logout">Sign Out</a>
       <a class="pill btn btn-outline-light mx-2 d-none" href="/profile">Profile</a>
       <a class="pill btn btn-outline-light mx-2" href="/upload">Upload</a>
-      <span class="navbar-text text-light mx-2 text-capitalize"><%= user.userName %></span>
+      <span class="navbar-text text-light mx-2 text-capitalize d-none d-md-block"><%= user.userName %></span>
     </div>
   </div>
 </nav>
@@ -38,26 +38,26 @@
 <!-- Song Library -->
 <div class="library container-fluid text-light bg-dark">
   <div class="row py-2 border-bottom border-light">
-      <span class="col text-center"></span>
-      <span class="col-3 text-center">Title</span>
-      <span class="col-3 text-center">Artist</span>
-      <span class="col-3 text-center">Album</span>
-      <span class="col text-center">Duration</span>
-      <span class="col text-center"></span>
+      <span class="col-1 text-center d-none d-md-block"></span>
+      <span class="col text-center">Title</span>
+      <span class="col text-center d-none d-md-block">Artist</span>
+      <span class="col text-center d-none d-md-block">Album</span>
+      <span class="col-1 text-center d-none d-md-block">Duration</span>
+      <span class="col-1 text-center"></span>
   </div>
   <div class="songParent pb-4">
     <% for(var i=0; i<songs.length; i++) {%>
         <div class="songDiv row d-flex" onclick="songDivIndex(this)">
-          <span class="col py-1 border-bottom border-light d-flex justify-content-center align-items-center"><img class="trackCoverArt" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></span>
-          <span class="col-3 py-1 border-bottom border-light d-flex align-items-center"><%= songs[i].title %></span>
-          <span class="col-3 py-1 border-bottom border-light d-flex justify-content-center align-items-center"><%= songs[i].artist%></span>
-          <span class="col-3 py-1 border-bottom border-light d-flex justify-content-center align-items-center"><%= songs[i].album%></span>
-          <span class="col py-1 border-bottom border-light d-flex justify-content-center align-items-center">
+          <span class="col-1 py-1 border-bottom border-light d-flex justify-content-center align-items-center  d-none d-md-block"><img class="trackCoverArt" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></span>
+          <span class="col py-1 border-bottom border-light d-flex align-items-center"><%= songs[i].title %></span>
+          <span class="col py-1 border-bottom border-light d-flex align-items-center  d-none d-md-block"><%= songs[i].artist%></span>
+          <span class="col py-1 border-bottom border-light d-flex align-items-center d-none d-md-block"><%= songs[i].album%></span>
+          <span class="col-1 py-1 border-bottom border-light d-flex justify-content-center align-items-center d-none d-md-block">
             <% let minutes = Math.floor(songs[i].duration / 60) %>
             <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
             <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
           </span>
-          <span class="col py-1 border-bottom border-light d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="" ><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
+          <span class="col-1 py-1 border-bottom border-light d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="" ><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
         </div>
       <% } %>
   </div>
@@ -81,10 +81,10 @@
   <div class="d-flex justify-content-between text-light mt-1">
     <!-- Track Img & Details -->
     <div class="playerDetails d-flex">
-      <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover id="cover" />
+      <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover  d-none d-md-block" id="cover" />
       <div class="trackDetails d-flex flex-column align-items-start justify-content-center ">
         <span class="title ps-2"><%= songs[songIndex]?.title || 'None' %></span>
-        <span class="artist ps-2"><%= songs[songIndex]?.artist || 'None'%></span>
+        <span class="artist ps-2 d-none d-md-block"><%= songs[songIndex]?.artist || 'None'%></span>
       </div>
     </div>
     
