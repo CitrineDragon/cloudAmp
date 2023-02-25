@@ -74,7 +74,7 @@ img {
   border-radius: 100%;
 }
 
-.playerDetails {
+/* .playerDetails {
   width: calc((100vw - 100px) / 2);
 }
 
@@ -84,7 +84,7 @@ img {
 
 .volumeControl {
   width: calc((100vw - 100px) / 2);
-}
+} */
 
 .form-range {
   width: 110px;

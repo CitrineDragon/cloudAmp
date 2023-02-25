@@ -40,9 +40,9 @@
   <div class="row py-2 border-bottom border-light">
       <span class="col-1 text-center"></span>
       <span class="col text-center">Title</span>
-      <span class="col text-center d-none d-md-block">Artist</span>
-      <span class="col text-center d-none d-md-block">Album</span>
-      <span class="col-1 text-center d-none d-md-block">Duration</span>
+      <span class="col text-center d-none d-lg-flex">Artist</span>
+      <span class="col text-center d-none d-lg-flex">Album</span>
+      <span class="col-1 text-center d-none d-lg-flex">Duration</span>
       <span class="col-1 text-center"></span>
   </div>
   <div class="songParent pb-4">
@@ -78,9 +78,9 @@
   </div>
   
 
-  <div class="d-flex justify-content-between text-light mt-1">
+  <div class="d-flex col justify-content-between text-light mt-1">
     <!-- Track Img & Details -->
-    <div class="playerDetails d-flex d-none d-lg-flex">
+    <div class="playerDetails col d-flex d-none d-lg-flex">
       <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover  d-none d-md-block" id="cover" />
       <div class="trackDetails d-flex flex-column align-items-start justify-content-center ">
         <span class="title ps-2"><%= songs[songIndex]?.title || 'None' %></span>
@@ -91,7 +91,7 @@
     <audio src="<%= songs[songIndex]?.songURL || ''%>" id="audio"></audio>
     
     <!-- Player Controls -->
-    <div class="playerControls d-flex justify-content-center align-items-center">
+    <div class="playerControls col d-flex justify-content-center align-items-center">
       <button id="prev" class="playerBtn prev btn shadow-none mx-1 text-light" title="Previous Track">
         <i class="fas fa-backward"></i>
       </button>
@@ -104,7 +104,7 @@
     </div>
 
     <!-- Volume Control -->
-    <div class="volumeControl d-flex justify-content-end align-items-center text-light d-none d-lg-flex">
+    <div class="volumeControl col d-flex justify-content-end align-items-center text-light d-none d-lg-flex">
       <i class="fa-solid fa-volume-high text-light pe-2"></i>
       <label for="volumeRange" class="form-label"></label>
       <input type="range" class="form-range" min="0" max="100" step="1" value="100" id="volumeRange" name="volumeRange" placeholder="">
