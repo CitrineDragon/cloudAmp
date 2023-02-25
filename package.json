@@ -1,12 +1,12 @@
 {
-  "name": "fullstack-template",
+  "name": "cloudamp",
   "version": "1.0.0",
   "description": "Starter template for future projects",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --delay 500ms index.js"
+    "dev": "nodemon --delay 500ms server.js"
   },
   "author": "",
   "license": "MIT",
