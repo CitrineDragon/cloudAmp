@@ -83,8 +83,8 @@
     <div class="playerDetails d-flex">
       <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover  d-none d-md-block" id="cover" />
       <div class="trackDetails d-flex flex-column align-items-start justify-content-center ">
-        <span class="title ps-2"><%= songs[songIndex]?.title || 'None' %></span>
-        <span class="artist ps-2 d-none d-md-block"><%= songs[songIndex]?.artist || 'None'%></span>
+        <span class="title ps-2 d-none d-lg-flex"><%= songs[songIndex]?.title || 'None' %></span>
+        <span class="artist ps-2 d-none d-lg-flex"><%= songs[songIndex]?.artist || 'None'%></span>
       </div>
     </div>
     
@@ -104,7 +104,7 @@
     </div>
 
     <!-- Volume Control -->
-    <div class="volumeControl d-flex justify-content-end align-items-center text-light">
+    <div class="volumeControl d-flex justify-content-end align-items-center text-light d-none d-lg-flex">
       <i class="fa-solid fa-volume-high text-light pe-2"></i>
       <label for="volumeRange" class="form-label"></label>
       <input type="range" class="form-range" min="0" max="100" step="1" value="100" id="volumeRange" name="volumeRange" placeholder="">
