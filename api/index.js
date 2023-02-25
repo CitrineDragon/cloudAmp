@@ -65,6 +65,10 @@ app.use('/api/songs', songRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/delete', deleteRoutes);
 
+app.get('./api', (req, res) => {
+  res.send('Hello World!');
+});
+
 //Server Running
 app.listen(process.env.PORT || 9001, () => {
   console.log('Server is running, you better catch it!');
