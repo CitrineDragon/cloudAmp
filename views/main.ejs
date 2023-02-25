@@ -80,11 +80,11 @@
 
   <div class="d-flex justify-content-between text-light mt-1">
     <!-- Track Img & Details -->
-    <div class="playerDetails d-flex">
+    <div class="playerDetails d-flex d-none d-lg-flex">
       <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover  d-none d-md-block" id="cover" />
       <div class="trackDetails d-flex flex-column align-items-start justify-content-center ">
-        <span class="title ps-2 d-none d-lg-flex"><%= songs[songIndex]?.title || 'None' %></span>
-        <span class="artist ps-2 d-none d-lg-flex"><%= songs[songIndex]?.artist || 'None'%></span>
+        <span class="title ps-2"><%= songs[songIndex]?.title || 'None' %></span>
+        <span class="artist ps-2"><%= songs[songIndex]?.artist || 'None'%></span>
       </div>
     </div>
     
