@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
@@ -13,6 +12,9 @@ const mainRoutes = require('./routes/main');
 const songRoutes = require('./routes/songs');
 const uploadRoutes = require('./routes/upload');
 const deleteRoutes = require('./routes/delete');
+const PORT = process.env.PORT || 9001;
+
+const app = express();
 
 //Use .env file in config folder
 require('dotenv').config({ path: './config/.env' });
@@ -21,7 +23,7 @@ require('dotenv').config({ path: './config/.env' });
 require('./config/passport')(passport);
 
 //Connect To Database
-connectDB();
+// connectDB();
 
 //Using EJS for views
 app.set('view engine', 'ejs');
@@ -65,7 +67,10 @@ app.use('/songs', songRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/delete', deleteRoutes);
 
-//Server Running
-app.listen(process.env.PORT || 9001, () => {
-  console.log('Server is running, you better catch it!');
+//Connect To Database
+connectDB().then(() => {
+  //Server Running
+  app.listen(PORT, () => {
+    console.log('Server is running, you better catch it!');
+  });
 });
