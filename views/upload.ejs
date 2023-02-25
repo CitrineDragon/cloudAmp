@@ -1,12 +1,12 @@
 <%- include('partials/header') -%>
-<div class="container">
+<div class="container-fluid">
   <nav class="navbar fixed-top navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">CloudAmp</a>
       <div class="navbar-nav d-flex flex-row-reverse px-2">
-        <a class="btn btn-outline-light mx-2" href="/logout">Sign Out</a>
-        <a class="btn btn-outline-light mx-2" href="/profile">Profile</a>
-        <a class="btn btn-outline-light mx-2" href="/main">Home</a>
+        <a class="pill btn btn-outline-light mx-2" href="/logout">Sign Out</a>
+        <a class="pill btn btn-outline-light mx-2 d-none" href="/profile">Profile</a>
+        <a class="pill btn btn-outline-light mx-2" href="/main">Home</a>
         <span class="navbar-text text-light mx-2 text-capitalize"
           ><%= user.userName %></span
         >
@@ -14,7 +14,7 @@
     </div>
   </nav>
 
-  <div class="row mt-5 first text-light">
+  <div class="d-flex justify-content-center align-items-center bg-dark row mt-5 first text-light">
     <div class="col-6">
       <div class="mt-5">
         <h2>Add a song</h2>
@@ -40,8 +40,16 @@
               name="file"
             />
           </div>
-          <button type="submit" class="btn btn-primary" value="Upload">
+          <button type="submit" class="pill btn btn-primary" value="Upload">
             Submit
+          </button>
+          <!-- <button type="submit" class="btn btn-primary" value="Upload">
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            >Submit</span>
+            <span class="visually-hidden">Loading...</span> -->
           </button>
         </form>
       </div>

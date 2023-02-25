@@ -1,3 +1,11 @@
+:root {
+  --dark-blue: #1f363d;
+  --light-blue: #40798c;
+  --seafoam: #70a9a1;
+  --sage: #9ec1a3;
+  --ligth-green: #cfe0c3;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -5,13 +13,17 @@
 }
 
 body {
+  background-color: #212529;
   position: relative;
-  background-color: black;
 }
 
 img {
   height: 50px;
   width: 50px;
+}
+
+.navbar {
+  background-color: #111 !important;
 }
 
 .first {
@@ -30,11 +42,20 @@ img {
   left: 0;
 }
 
+.songParent {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.songDiv:hover {
+  cursor: pointer;
+}
+
 .progress {
   height: 16px;
   width: 70%;
-  border-top: 5px solid black;
-  border-bottom: 5px solid black;
+  border-top: 5px solid #111;
+  border-bottom: 5px solid #111;
   border-radius: 7px;
 }
 
@@ -43,11 +64,8 @@ img {
 }
 
 .player {
-  position: absolute;
-  background-color: black;
+  background-color: #111 !important;
   height: 110px;
-  bottom: 0;
-  left: 0;
 }
 
 .playerBtn {
@@ -70,4 +88,61 @@ img {
 
 .form-range {
   width: 110px;
+}
+
+.pill {
+  border-radius: 50px;
+}
+
+/* Background Video */
+
+.video-background-holder {
+  position: relative;
+  background-color: black;
+  height: calc(100vh - 56px);
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-background-holder video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.video-background-content {
+  position: relative;
+  z-index: 2;
+}
+
+.video-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+.video-background-overlay-2 {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  height: calc(100vh - (50vh + 166px));
+  width: 100%;
+  background-color: black;
+  opacity: 0.75;
+  z-index: 1;
 }

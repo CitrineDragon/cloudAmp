@@ -2,13 +2,13 @@
 
 <%- include('partials/header') -%>
 
-<nav class="navbar fixed-top navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">CloudAmp</a>
+    <a class="navbar-brand text-light" href="/">CloudAmp</a>
     <div class="navbar-nav d-flex flex-row-reverse px-2">
-      <a class="btn btn-outline-light mx-2" href="/logout">Sign Out</a>
-      <a class="btn btn-outline-light mx-2" href="/profile">Profile</a>
-      <a class="btn btn-outline-light mx-2" href="/upload">Upload</a>
+      <a class="pill btn btn-outline-light mx-2" href="/logout">Sign Out</a>
+      <a class="pill btn btn-outline-light mx-2 d-none" href="/profile">Profile</a>
+      <a class="pill btn btn-outline-light mx-2" href="/upload">Upload</a>
       <span class="navbar-text text-light mx-2 text-capitalize"><%= user.userName %></span>
     </div>
   </div>
@@ -17,47 +17,55 @@
 <% let songIndex = 0 %>
 
 <!-- Hero -->
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center first hero bg-primary bg-gradient text-light">
+<!-- <div class="container-fluid d-flex flex-column justify-content-center align-items-center first hero bg-primary bg-gradient text-light">
   <h2>CloudAmp</h2>
   <p>Your Music, Anywhere!</p>
+</div> -->
+
+<div class="hero video-background-holder">
+  <div class="video-background-overlay-2"></div>
+  <video
+    playsinline="playsinline"
+    autoplay="autoplay"
+    muted="muted"
+    loop="loop"
+  >
+    <source src="/imgs/indexBG.mp4" type="video/mp4" />
+  </video>
 </div>
 
 
-<!-- Table -->
-<div class="container-fluid g-0 table-responsive library">
-  <table class="table table-dark table-striped table-hover align-middle">
-    <thead>
-      <tr>
-        <th scope="col" style="width: 10%"></th>
-        <th scope="col" style="width: 25%">Title</th>
-        <th scope="col" style="width: 25%">Artist</th>
-        <th scope="col" style="width: 25%">Album</th>
-        <th scope="col" style="width: 10%">Duration</th>
-        <th scope="col" style="width: 5%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for(var i=0; i<songs.length; i++) {%>
-        <tr onclick="getIndex(this)">
-          <th scope="row" class="py-1"><img class="trackCoverArt ms-2" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></th>
-          <td class="py-1"><%= songs[i].title %></td>
-          <td class="py-1"><%= songs[i].artist%></td>
-          <td class="py-1"><%= songs[i].album%></td>
-          <td class="py-1">
+<!-- Song Library -->
+<div class="library container-fluid text-light bg-dark">
+  <div class="row py-2 border-bottom border-light">
+      <span class="col text-center"></span>
+      <span class="col-3 text-center">Title</span>
+      <span class="col-3 text-center">Artist</span>
+      <span class="col-3 text-center">Album</span>
+      <span class="col text-center">Duration</span>
+      <span class="col text-center"></span>
+  </div>
+  <div class="songParent pb-4">
+    <% for(var i=0; i<songs.length; i++) {%>
+        <div class="songDiv row d-flex" onclick="songDivIndex(this)">
+          <span class="col py-1 border-bottom border-light d-flex justify-content-center align-items-center"><img class="trackCoverArt" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></span>
+          <span class="col-3 py-1 border-bottom border-light d-flex align-items-center"><%= songs[i].title %></span>
+          <span class="col-3 py-1 border-bottom border-light d-flex justify-content-center align-items-center"><%= songs[i].artist%></span>
+          <span class="col-3 py-1 border-bottom border-light d-flex justify-content-center align-items-center"><%= songs[i].album%></span>
+          <span class="col py-1 border-bottom border-light d-flex justify-content-center align-items-center">
             <% let minutes = Math.floor(songs[i].duration / 60) %>
             <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
             <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
-          </td>
-          <td class="py-1"><a href="/delete/<%= songs[i]._id %>" title="delete" class="me-2" ><i class="fa-solid fa-trash text-light"></i></a></td>
-        </tr>
+          </span>
+          <span class="col py-1 border-bottom border-light d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="" ><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
+        </div>
       <% } %>
-    </tbody>
-  </table>
+  </div>
 </div>
   
 
 <!-- Music Player -->
-<div class="player container-fluid pt-3" data-songs="<%= JSON.stringify(songs) %>">
+<div class="player container-fluid pt-3 position-absolute bottom-0 start-0 bg-dark" data-songs="<%= JSON.stringify(songs) %>">
   <div class="progressSection d-flex justify-content-center align-items-center">
     <!-- Current Time -->
     <span class="cDur text-light me-2">0:00</span>
@@ -84,13 +92,13 @@
     
     <!-- Player Controls -->
     <div class="playerControls d-flex justify-content-center align-items-center">
-      <button id="prev" class="playerBtn btn btn-primary prev shadow-none mx-1" title="Previous Track">
+      <button id="prev" class="playerBtn prev btn shadow-none mx-1 text-light" title="Previous Track">
         <i class="fas fa-backward"></i>
       </button>
-      <button id="play" class="playerBtn btn btn-primary play shadow-none mx-1" title="Play Track">
+      <button id="play" class="playerBtn play btn btn-primary shadow-none mx-1" title="Play Track">
         <i class="fas fa-play"></i>
       </button>
-      <button id="next" class="playerBtn btn btn-primary next shadow-none mx-1" title="Next Track">
+      <button id="next" class="playerBtn next btn  shadow-none mx-1 text-light" title="Next Track">
         <i class="fas fa-forward"></i>
       </button>
     </div>
@@ -110,3 +118,7 @@
 
 
 <%- include('partials/footer') -%>
+
+
+
+

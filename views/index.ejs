@@ -4,12 +4,36 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/">CloudAmp</a>
     <div class="navbar-nav d-flex flex-row-reverse px-2">
-      <a class="btn btn-outline-light mx-2" href="/signup">Signup</a>
-      <a class="btn btn-outline-light mx-2" href="/login">Login</a>
+      <a class="pill btn btn-outline-light mx-2" href="/signup">Signup</a>
+      <a class="pill btn btn-outline-light mx-2" href="/login">Login</a>
     </div>
   </div>
 </nav>
 
-<main class="container first"></main>
+<main class="first">
+  <div class="video-background-holder">
+    <div class="video-background-overlay"></div>
+    <video
+      playsinline="playsinline"
+      autoplay="autoplay"
+      muted="muted"
+      loop="loop"
+    >
+      <source src="/imgs/indexBG.mp4" type="video/mp4" />
+    </video>
+    <div class="video-background-content container h-100">
+      <div class="d-flex h-100 text-center align-items-center">
+        <div class="w-100 text-white">
+          <h1 class="display-1">CloudAmp</h1>
+          <p class="lead mb-5">Your Music, Anywhere!</p>
+          <p class="mb-0">
+            Sign up, upload your favorite tracks and listen to them anywhere!
+            Easy as that.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 <%- include('partials/footer') -%>

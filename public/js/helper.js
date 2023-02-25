@@ -11,6 +11,7 @@ let artist = document.querySelector('.artist');
 let cDur = document.querySelector('.cDur');
 let mDur = document.querySelector('.mDur');
 let volume = document.querySelector('.form-range');
+let songParent = document.querySelector('.songParent');
 
 // Keep track of song index
 let songIndex = 0;
@@ -111,6 +112,14 @@ function volumeUpdate(e) {
 
 function getIndex(x) {
   songIndex = x.rowIndex - 1;
+  playSong();
+}
+
+function songDivIndex(div) {
+  const songParent = document.querySelector('.songParent');
+  const collection = Array.from(songParent.querySelectorAll('.songDiv'));
+  const index = collection.indexOf(div);
+  songIndex = index;
   playSong();
 }
 
