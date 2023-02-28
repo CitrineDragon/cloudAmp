@@ -36,7 +36,7 @@ span {
 }
 
 .first {
-  content: '';
+  content: 'a';
   background-color: black;
   margin-top: 56px !important;
 }
@@ -140,7 +140,7 @@ span {
 
 .video-background-overlay-2 {
   position: absolute;
-  top: 56px;
+  top: 0px;
   left: 0;
   height: calc(100vh - (50vh + 166px));
   width: 100%;

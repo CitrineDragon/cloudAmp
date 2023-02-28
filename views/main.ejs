@@ -35,14 +35,9 @@
   <p>Your Music, Anywhere!</p>
 </div> -->
 
-<div class="hero video-background-holder">
+<div class="hero first video-background-holder">
   <div class="video-background-overlay-2"></div>
-  <video
-    playsinline="playsinline"
-    autoplay="autoplay"
-    muted="muted"
-    loop="loop"
-  >
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
     <source src="https://res.cloudinary.com/drfh0vi5h/video/upload/v1677351906/indexBG_fqgznx.mp4" type="video/mp4" />
   </video>
 </div>
@@ -62,22 +57,22 @@
   </div>
   <div class="songParent pb-5">
     <% for(var i=0; i<songs.length; i++) {%>
-        <div class="songDiv row d-flex" onclick="songDivIndex(this)">
-          <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center img-fluid d-none d-sm-flex"><img class="trackCoverArt" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></span>
-          <span class="col py-1 border-bottom border-secondary d-flex align-items-center"><%= songs[i].title %></span>
-          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].artist%></span>
-          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].album%></span>
-          <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center d-none d-sm-flex">
-            <% let minutes = Math.floor(songs[i].duration / 60) %>
-            <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
-            <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
-          </span>
-          <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="trash" ><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
-        </div>
-      <% } %>
+    <div class="songDiv row d-flex" onclick="songDivIndex(this)">
+      <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center img-fluid d-none d-sm-flex"><img class="trackCoverArt" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></span>
+      <span class="col py-1 border-bottom border-secondary d-flex align-items-center"><%= songs[i].title %></span>
+      <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].artist%></span>
+      <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].album%></span>
+      <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center d-none d-sm-flex">
+        <% let minutes = Math.floor(songs[i].duration / 60) %>
+        <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
+        <%= `${minutes}:${seconds < 10 ? '0' + seconds : seconds }` %>
+      </span>
+      <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="trash"><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
+    </div>
+    <% } %>
   </div>
 </div>
-  
+
 
 <!-- Music Player -->
 <div class="player container-fluid pt-3 position-absolute bottom-0 start-0" data-songs="<%= JSON.stringify(songs) %>">
@@ -91,7 +86,7 @@
     <!-- Max Duration -->
     <span class="mDur text-light ms-2">0:00</span>
   </div>
-  
+
 
   <div class="d-flex col justify-content-between text-light mt-1">
     <!-- Track Img & Details -->
@@ -102,9 +97,9 @@
         <span class="artist ps-2"><%= songs[songIndex]?.artist || 'None'%></span>
       </div>
     </div>
-    
+
     <audio src="<%= songs[songIndex]?.songURL || ''%>" id="audio"></audio>
-    
+
     <!-- Player Controls -->
     <div class="playerControls col d-flex justify-content-center align-items-center">
       <button id="prev" class="playerBtn prev btn text-light shadow-none mx-1" title="Previous Track">
@@ -129,11 +124,7 @@
 </div>
 
 
-  
+
 
 
 <%- include('partials/footer') -%>
-
-
-
-
