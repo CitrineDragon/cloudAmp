@@ -1,11 +1,3 @@
-:root {
-  --dark-blue: #1f363d;
-  --light-blue: #40798c;
-  --seafoam: #70a9a1;
-  --sage: #9ec1a3;
-  --ligth-green: #cfe0c3;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -28,6 +20,19 @@ span {
 
 .navbar {
   background-color: #111 !important;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: none !important;
+}
+.navbar-toggler-icon::before {
+  font-family: FontAwesome;
+  content: '\f0c9'; /* fa-bars, fa-navicon */
+  border: none;
 }
 
 .first {
@@ -53,13 +58,12 @@ span {
   overflow-y: auto;
 }
 
-.songDiv {
-  padding: 0;
-  margin: 0;
-}
-
 .songDiv:hover {
   cursor: pointer;
+}
+
+.fa-trash:hover {
+  color: #dc3545;
 }
 
 .progress {
@@ -68,10 +72,6 @@ span {
   border-top: 5px solid #111;
   border-bottom: 5px solid #111;
   border-radius: 7px;
-}
-
-.progress-bar {
-  background-color: lightseagreen;
 }
 
 .progress:hover {
@@ -149,8 +149,12 @@ span {
   z-index: 1;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 541px) {
   .video-background-overlay-2 {
-    top: 0px;
+    top: 56px;
+  }
+
+  .songDiv {
+    min-height: 60px;
   }
 }

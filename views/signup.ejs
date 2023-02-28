@@ -1,69 +1,58 @@
 <%- include('partials/header') -%>
 
-<nav class="navbar fixed-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">CloudAmp</a>
-    <div class="navbar-nav d-flex flex-row-reverse px-2">
-      <a class="pill btn btn-outline-light mx-2" href="/login">Login</a>
+    <a class="navbar-brand text-info" href="/">Cloud<span class="text-light">Amp</span></a>
+    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon d-flex justify-content-center align-items-center"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
 
-<main class="container-fluid first text-light">
-  <div class="row justify-content-center">
-    <section class="col-6 mt-5">
-      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+<main class="first">
+  <div class="containter-fluid pt-5 g-0 d-flex row justify-content-center align-items-center text-light">
+    <h2 class="mb-5 text-center text-light text-decoration-underline">Signup For <span class="text-info">Cloud</span>Amp</h2>
+
+    <section class="col-6 text-info">
+      <% if (locals.messages.errors) { %>
+      <% messages.errors.forEach( el => { %>
       <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-      messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
-      <% }) %> <% } %>
+      <% }) %>
+      <% } %>
+      <% if (locals.messages.info) { %>
+      <% messages.info.forEach( el => { %>
+      <div class="alert alert-danger"><%= el.msg %></div>
+      <% }) %>
+      <% } %>
+
       <form action="/signup" method="POST">
-        <div class="mb-3">
+        <div class="mb-4">
           <label for="userName" class="form-label">User Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="userName"
-            name="userName"
-          />
+          <input type="text" class="form-control" id="userName" name="userName" />
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            name="email"
-          />
+        <div class="mb-4">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" />
           <div id="emailHelp" class="form-text">
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-4">
           <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-          />
+          <input type="password" class="form-control" id="password" name="password" />
         </div>
-        <div class="mb-3">
-          <label for="confirmPassword" class="form-label"
-            >Confirm Password</label
-          >
-          <input
-            type="password"
-            class="form-control"
-            id="confirmPassword"
-            name="confirmPassword"
-          />
+        <div class="mb-4">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" />
         </div>
-        <button type="submit" class="pill btn btn-primary">Submit</button>
+        <button type="submit" class="pill btn btn-outline-info">Submit</button>
       </form>
     </section>
   </div>
