@@ -5,8 +5,8 @@ const parseFile = (...args) =>
 // const Upload = require('../models/Upload');
 
 module.exports = {
-  getUpload: async (req, res) => {
-    res.render('upload', { user: req.user });
+  getUpload: async (req, res, err) => {
+    res.render('upload', { user: req.user, err: err });
   },
   createSong: async (req, res) => {
     let picUpload = {};
@@ -43,7 +43,11 @@ module.exports = {
       res.redirect('/main');
     } catch (err) {
       console.log(err);
-      res.redirect('/upload');
+      if (err.message === 'Unsupported video format or file') {
+        res.render('upload', { user: req.user, err: err });
+      } else {
+        res.redirect('/upload');
+      }
     }
   },
 };

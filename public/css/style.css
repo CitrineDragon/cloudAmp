@@ -168,3 +168,7 @@ input[type='range']::-ms-thumb {
     min-height: 60px;
   }
 }
+
+.displayed {
+  display: block;
+}

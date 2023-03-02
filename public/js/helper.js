@@ -115,6 +115,7 @@ function volumeUpdate(e) {
 }
 
 function songDivIndex(div) {
+  console.log(this);
   const songParent = document.querySelector('.songParent');
   const collection = Array.from(songParent.querySelectorAll('.songDiv'));
   const index = collection.indexOf(div);

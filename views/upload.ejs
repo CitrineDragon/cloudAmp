@@ -50,6 +50,11 @@
   </div>
 </main>
 
+<% if (err.message === 'Unsupported video format or file') { %>
+<p class="lead text-danger text-center pt-5">Unsupported file format! Only the follow file types are supported:<br>
+  .aac, .aiff, .m4a, ,mp3, .ogg, .wav</p>
+<% } %>
+
 <div class="pt-5 text-center text-light">
   <p class="lead text-warning">Warning: Files must be smaller than 5 Megabytes.</p>
 </div>

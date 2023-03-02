@@ -13,8 +13,7 @@ module.exports = multer({
       ext !== '.ogg' &&
       ext !== '.wav'
     ) {
-      cb(new Error('The file type is not supported'), false);
-      return;
+      cb(null, false);
     }
     cb(null, true);
   },
