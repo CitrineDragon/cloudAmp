@@ -40,7 +40,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log('Song has been added!');
-      res.redirect('/main');
+      res.redirect('/upload');
     } catch (err) {
       console.log(err);
       if (err.message === 'Unsupported video format or file') {

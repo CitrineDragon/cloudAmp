@@ -69,7 +69,6 @@ function prevSong() {
 // Next song
 function nextSong() {
   songIndex++;
-  console.log(songIndex);
   if (songIndex > songList.length - 1) {
     songIndex = 0;
   }
