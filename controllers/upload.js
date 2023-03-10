@@ -6,7 +6,7 @@ const parseFile = (...args) =>
 
 module.exports = {
   getUpload: async (req, res, err) => {
-    res.render('upload', { user: req.user, err: err });
+    res.render('upload.ejs', { user: req.user, err: err });
   },
   createSong: async (req, res) => {
     let picUpload = {};

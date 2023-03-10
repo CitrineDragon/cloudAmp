@@ -1,13 +1,16 @@
 <%- include('partials/header') -%>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-  <div class="container-fluid">
+  <div class="container-lg">
     <a class="navbar-brand text-info" href="/main">Cloud<span class="text-light">Amp</span></a>
     <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon d-flex justify-content-center align-items-center"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="/login">Login</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/signup">Signup</a>
         </li>
@@ -16,10 +19,10 @@
   </div>
 </nav>
 
-<main class="first">
-  <div class="containter-fluid pt-5 g-0 d-flex row justify-content-center align-items-center text-light">
-    <h2 class="mb-5 text-center text-light text-decoration-underline">Log Into <span class="text-info">Cloud</span>Amp</h2>
-    <section class="col-6 text-info">
+<main class="first fullPage container-lg d-flex justify-content-center align-items-center">
+  <div class="text-light border border-info rounded py-5 g-0 d-flex row justify-content-center align-items-center">
+    <h2 class="mb-5 text-center text-light">Login To <span class="text-info">Cloud</span>Amp</h2>
+    <section class="col-10 text-info">
       <% if (locals.messages.errors) { %>
       <% messages.errors.forEach( el => { %>
       <div class="alert alert-danger"><%= el.msg %></div>

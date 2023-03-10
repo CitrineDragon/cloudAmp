@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/multer');
 const { ensureAuth } = require('../middleware/auth');
+const upload = require('../middleware/multer');
 const uploadController = require('../controllers/upload');
 
 router.get('/', ensureAuth, uploadController.getUpload);

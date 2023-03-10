@@ -22,9 +22,9 @@ module.exports = {
       }
       await Song.remove({ _id: req.params.id });
       console.log('Deleted Song');
-      res.redirect('/main');
+      res.redirect('/manage');
     } catch (err) {
-      res.redirect('/main');
+      res.redirect('/manage');
     }
   },
 };

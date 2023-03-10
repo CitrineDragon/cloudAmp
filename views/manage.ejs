@@ -1,0 +1,68 @@
+<!-- <script defer src="/js/helper.js"></script> -->
+
+<%- include('partials/header') -%>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+  <div class="container-lg">
+    <a class="navbar-brand text-info" href="/main">Cloud<span class="text-light">Amp</span></a>
+    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon d-flex justify-content-center align-items-center"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-info" href="#"><%= user.userName %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/main">Player</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/upload">Upload</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="/manage">Manage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="first container-lg px-0 text-light">
+  <!-- Playlist Section -->
+  <div>
+    <h2>Playlists</h2>
+  </div>
+
+  <!-- Manage Section -->
+  <div>
+    <h2>Manage Your Music</h2>
+    <!-- Song Library -->
+    <div class="manageLibrary container-lg px-0 mx-auto text-light bg-dark">
+      <div class="songHeader row py-2 mx-auto border-bottom border-secondary text-info">
+        <span class="col ">Title</span>
+        <span class="col d-none d-lg-flex">Artist</span>
+        <span class="col d-none d-lg-flex">Album</span>
+        <span class="col-1 text-center">Delete</span>
+      </div>
+
+      <div class="songParent">
+        <% for(var i=0; i<songs.length; i++) {%>
+        <div class="songDiv row mx-auto d-flex">
+          <span class="col py-1 border-bottom border-secondary d-flex align-items-center"><%= songs[i].title %></span>
+          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].artist%></span>
+          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].album%></span>
+          <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="trash"><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

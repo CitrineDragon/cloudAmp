@@ -8,10 +8,14 @@ const flash = require('express-flash');
 const logger = require('morgan');
 const cors = require('cors');
 const connectDB = require('./config/database');
+
 const mainRoutes = require('./routes/main');
 const songRoutes = require('./routes/songs');
+const manageRoutes = require('./routes/manage');
 const uploadRoutes = require('./routes/upload');
+const profileRoutes = require('./routes/profile');
 const deleteRoutes = require('./routes/delete');
+
 const PORT = process.env.PORT || 9001;
 
 const app = express();
@@ -64,7 +68,9 @@ app.use(flash());
 //Setup Routes For Which The Server Is Listening
 app.use('/', mainRoutes);
 app.use('/songs', songRoutes);
+app.use('/manage', manageRoutes);
 app.use('/upload', uploadRoutes);
+app.use('/profile', profileRoutes);
 app.use('/delete', deleteRoutes);
 
 //Connect To Database
