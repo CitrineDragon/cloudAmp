@@ -34,6 +34,30 @@ span {
   min-width: 70px;
 }
 
+button:focus {
+  box-shadow: none !important;
+}
+
+/* Accordion */
+
+.accordion-body {
+  background-color: black;
+  color: #0dcaf0;
+}
+
+.accordion-item {
+  border-color: #0dcaf0;
+}
+
+.accordion-button {
+  background-color: #111 !important;
+  color: white;
+}
+
+.accordion-button:not(.collapsed) {
+  color: white;
+}
+
 .displayed {
   display: block;
 }

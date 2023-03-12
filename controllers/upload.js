@@ -9,6 +9,8 @@ module.exports = {
     res.render('upload.ejs', { user: req.user, err: err });
   },
   createSong: async (req, res) => {
+    const validationErrors = [];
+    const validationSuccess = [];
     let picUpload = {};
     try {
       // Upload Audio to cloudinary
@@ -39,15 +41,28 @@ module.exports = {
         cloudinaryImageId: picUpload.public_id,
         user: req.user.id,
       });
+
+      validationSuccess.push({ msg: 'Your song has been added' });
+
+      if (validationSuccess.length) {
+        req.flash('success', validationSuccess);
+        return res.redirect('/upload');
+      }
       console.log('Song has been added!');
       res.redirect('/upload');
     } catch (err) {
-      console.log(err);
       if (err.message === 'Unsupported video format or file') {
-        res.render('upload', { user: req.user, err: err });
-      } else {
-        res.redirect('/upload');
+        validationErrors.push({
+          msg: 'Unsupported video format or file. Supported file types are: .aac, .aiff, .m4a, ,mp3, .ogg & .wav',
+        });
+
+        if (validationErrors.length) {
+          req.flash('errors', validationErrors);
+          return res.redirect('/upload');
+        }
       }
+      console.log(err);
+      res.redirect('/upload');
     }
   },
 };

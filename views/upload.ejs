@@ -30,9 +30,26 @@
     </div>
   </div>
 </nav>
+<section class="first">
+  <% if (locals.messages.errors) { %>
+  <% messages.errors.forEach( el => { %>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %>
+  <% } %>
+  <% if (locals.messages.info) { %>
+  <% messages.info.forEach( el => { %>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %>
+  <% } %>
+  <% if (locals.messages.success) { %>
+  <% messages.success.forEach( el => { %>
+  <div class="alert alert-success"><%= el.msg %></div>
+  <% }) %>
+  <% } %>
+</section>
 
-<main class="first fullPage container-lg d-flex flex-column justify-content-center align-items-center">
-  <div class="text-light border border-info rounded py-5 g-0 d-flex row justify-content-center align-items-center">
+<main class="container-lg py-5 d-flex flex-column justify-content-center align-items-center">
+  <div class="py-5 text-light border border-info rounded g-0 d-flex row justify-content-center align-items-center">
     <h2 class="mb-5 text-center text-light">Upload Music To <span class="text-info">Cloud</span>Amp</h2>
     <section class="col-10 text-info">
       <form action="/upload/createSong" enctype="multipart/form-data" method="POST" class="text-info">
@@ -54,17 +71,11 @@
       </form>
     </section>
   </div>
-
-  <% if (err.message === 'Unsupported video format or file') { %>
-  <p class="lead text-danger text-center pt-3">Unsupported file format! Supported file types are:<br>
-    <span class="text-light">.aac, .aiff, .m4a, ,mp3, .ogg, .wav</span>
-  </p>
-  <% } %>
-
   <div class="py-3 text-center text-light">
     <p class="lead text-warning">Warning: Files must be smaller than 5 Megabytes.</p>
   </div>
-
 </main>
+
+
 
 <%- include('partials/footer') -%>

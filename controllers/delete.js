@@ -6,25 +6,30 @@ const parseFile = (...args) =>
 module.exports = {
   deleteSong: async (req, res) => {
     try {
-      // Find post by id
+      const validationErrors = [];
+      const validationSuccess = [];
+      // Find song by id
       let song = await Song.findById({ _id: req.params.id });
       // Delete image from cloudinary
-      console.log(
-        song,
-        req.params.id,
-        await cloudinary.uploader.destroy(song.cloudinaryId, {
-          resource_type: 'video',
-        })
-      );
-      // Delete post from db
-      if (song.cloudinaryImageId) {
-        await cloudinary.uploader.destroy(song.cloudinaryImageId);
-      }
+      await cloudinary.uploader.destroy(song.cloudinaryId);
+      // Delete song from db
       await Song.remove({ _id: req.params.id });
+
       console.log('Deleted Song');
+      validationSuccess.push({ msg: 'Song successfully deleted' });
+
+      if (validationErrors.length) {
+        req.flash('errors', validationErrors);
+        return res.redirect('/manage');
+      }
+
+      if (validationSuccess.length) {
+        req.flash('success', validationSuccess);
+        return res.redirect('/manage');
+      }
       res.redirect('/manage');
     } catch (err) {
-      res.redirect('/manage');
+      res.redirect('/main');
     }
   },
 };

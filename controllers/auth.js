@@ -1,5 +1,6 @@
 const passport = require('passport');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 exports.getLogin = (req, res) => {
@@ -115,4 +116,50 @@ exports.postSignup = (req, res, next) => {
       });
     }
   );
+};
+
+exports.changePassword = async (req, res) => {
+  const validationErrors = [];
+  const validationSuccess = [];
+
+  const username = await User.findOne({ userName: req.user.userName });
+  const currentPassword = username.password;
+  const passwordMatch = await bcrypt.compare(
+    req.body.currentPassword,
+    currentPassword
+  );
+
+  if (!passwordMatch) {
+    validationErrors.push({ msg: 'Current password is incorrect' });
+  }
+
+  if (
+    !validator.isLength(req.body.newPassword, { min: 8 }) ||
+    !validator.isLength(req.body.confirmNewPassword, { min: 8 })
+  ) {
+    validationErrors.push({
+      msg: 'Password must be at least 8 characters long',
+    });
+  }
+
+  if (req.body.newPassword !== req.body.confirmNewPassword) {
+    validationErrors.push({ msg: 'New passwords do not match' });
+  }
+
+  if (validationErrors.length) {
+    req.flash('errors', validationErrors);
+    return res.redirect('../profile');
+  }
+
+  // console.log(req.body);
+  username.password = req.body.newPassword;
+  await username.save();
+
+  validationSuccess.push({ msg: 'Password changed successfully' });
+
+  if (validationSuccess.length) {
+    req.flash('success', validationSuccess);
+    return res.redirect('../profile');
+  }
+  res.redirect('/profile');
 };

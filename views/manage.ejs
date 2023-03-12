@@ -33,11 +33,29 @@
   </div>
 </nav>
 
-<div class="first container-lg px-0 text-light">
+<section class="first">
+  <% if (locals.messages.errors) { %>
+  <% messages.errors.forEach( el => { %>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %>
+  <% } %>
+  <% if (locals.messages.info) { %>
+  <% messages.info.forEach( el => { %>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %>
+  <% } %>
+  <% if (locals.messages.success) { %>
+  <% messages.success.forEach( el => { %>
+  <div class="alert alert-success"><%= el.msg %></div>
+  <% }) %>
+  <% } %>
+</section>
+
+<div class="container-lg px-0 py-5 text-light">
   <!-- Playlist Section -->
   <div class='container-lg'>
     <h2>Playlists</h2>
-    <p>This is where the playlists will go</p>
+    <p>Coming Soon.</p>
   </div>
 
   <!-- Manage Section -->
