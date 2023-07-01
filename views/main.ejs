@@ -62,13 +62,13 @@
       <% for(var i=0; i<songs.length; i++) {%>
       <div class="songDiv d-flex row mx-auto" onclick="songDivIndex(this)">
         <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center img-fluid d-none d-sm-flex"><img class="trackCoverArt" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></span>
-        <span class="col py-1 border-bottom border-secondary">
+        <span class="col py-1 border-bottom border-secondary d-flex align-items-center">
           <p class="truncate"><%= songs[i].title %></p>
         </span>
-        <span class="col py-1 border-bottom border-secondary d-none d-lg-flex">
+        <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-lg-flex">
           <p class="truncate"><%= songs[i].artist%></p>
         </span>
-        <span class="col py-1 border-bottom border-secondary d-none d-lg-flex">
+        <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex">
           <p class="truncate"><%= songs[i].album%></p>
         </span>
         <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center">
