@@ -210,7 +210,7 @@ button:focus {
 
 .textTruncate2 {
   display: inline-block;
-  width: 300px;
+  width: 350px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
