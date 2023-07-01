@@ -200,7 +200,7 @@ button:focus {
   overflow-y: visible;
 }
 
-.test {
+.truncate {
   display: inline-block;
   min-width: 0;
   overflow: hidden;
@@ -214,6 +214,10 @@ button:focus {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.songDiv > span > p {
+  margin: 0;
 }
 
 /* Background Video */

@@ -22,11 +22,16 @@ module.exports = {
       const validationSuccess = [];
       // Find song by id
       let song = await Song.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      // await cloudinary.uploader.destroy(song.cloudinaryId);
+      // Delete song from cloudinary
       await cloudinary.uploader
         .destroy(song.cloudinaryId, { resource_type: 'video' })
         .then((result) => console.log(result));
+      // Delete cover art from cloudinary
+      if (song.cloudinaryImageId !== undefined) {
+        await cloudinary.uploader
+          .destroy(song.cloudinaryImageId)
+          .then((result) => console.log(result));
+      }
       // Delete song from db
       await Song.remove({ _id: req.params.id });
 

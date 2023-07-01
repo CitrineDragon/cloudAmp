@@ -59,8 +59,9 @@
   </div>
 
   <!-- Manage Section -->
-  <div class='container-lg'>
-    <h2>Manage Your Music</h2>
+  <h2 class="container-lg">Manage Your Music</h2>
+
+  <div class='container-lg px-0'>
     <!-- Song Library -->
     <div class="manageLibrary container-lg px-0 mx-auto text-light bg-dark">
       <div class="songHeader row py-2 mx-auto border-bottom border-secondary text-info">
@@ -97,13 +98,13 @@
             </ul>
           </span>
           <span class="col py-1 border-bottom border-secondary d-flex align-items-center">
-            <p class="test"><%= songs[i].title %></p>
+            <p class="truncate"><%= songs[i].title %></p>
           </span>
           <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex">
-            <p class="test"><%= songs[i].artist%></p>
+            <p class="truncate"><%= songs[i].artist%></p>
           </span>
           <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex">
-            <p class="test"><%= songs[i].album%></p>
+            <p class="truncate"><%= songs[i].album%></p>
           </span>
           <!-- <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="trash"><i class="fa-solid fa-trash py-1 text-light"></i></a></span> -->
         </div>
