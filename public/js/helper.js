@@ -102,9 +102,9 @@ function timeUpdate() {
 }
 
 function progressUpdate(e) {
-  let x = e.pageX - this.offsetLeft,
-    clickedValue =
-      (x * progressBar.getAttribute('aria-valuemax')) / this.offsetWidth;
+  let x = e.offsetX;
+  let clickedValue =
+    (x * progressBar.getAttribute('aria-valuemax')) / this.offsetWidth;
   audio.currentTime = clickedValue;
 }
 

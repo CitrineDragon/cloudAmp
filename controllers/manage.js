@@ -23,7 +23,10 @@ module.exports = {
       // Find song by id
       let song = await Song.findById({ _id: req.params.id });
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(song.cloudinaryId);
+      // await cloudinary.uploader.destroy(song.cloudinaryId);
+      await cloudinary.uploader
+        .destroy(song.cloudinaryId, { resource_type: 'video' })
+        .then((result) => console.log(result));
       // Delete song from db
       await Song.remove({ _id: req.params.id });
 
@@ -41,6 +44,7 @@ module.exports = {
       }
       res.redirect('/manage');
     } catch (err) {
+      console.log(err);
       res.redirect('/main');
     }
   },

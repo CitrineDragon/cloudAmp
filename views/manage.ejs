@@ -33,7 +33,7 @@
   </div>
 </nav>
 
-<section class="first">
+<section class="first text-center">
   <% if (locals.messages.errors) { %>
   <% messages.errors.forEach( el => { %>
   <div class="alert alert-danger"><%= el.msg %></div>
@@ -64,19 +64,48 @@
     <!-- Song Library -->
     <div class="manageLibrary container-lg px-0 mx-auto text-light bg-dark">
       <div class="songHeader row py-2 mx-auto border-bottom border-secondary text-info">
-        <span class="col ">Title</span>
+        <span class="col-1 text-center"></span>
+        <span class="col">Title</span>
         <span class="col d-none d-lg-flex">Artist</span>
         <span class="col d-none d-lg-flex">Album</span>
-        <span class="col-1 text-center">Delete</span>
+        <!-- <span class="col-1 text-center">Delete</span> -->
       </div>
 
-      <div class="songParent">
+      <div class="songParent songParentOverflow">
         <% for(var i=0; i<songs.length; i++) {%>
         <div class="songDiv row mx-auto d-flex">
-          <span class="col py-1 border-bottom border-secondary d-flex align-items-center"><%= songs[i].title %></span>
-          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].artist%></span>
-          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].album%></span>
-          <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="trash"><i class="fa-solid fa-trash py-1 text-light"></i></a></span>
+          <span class="dropdown col-1 border-bottom border-secondary d-flex justify-content-center align-items-center border-bottom border-secondary">
+            <button class="btn btn-secondary dropdown-toggle bg-dark border-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-circle-plus"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="/manage/<%= songs[i]._id %>">Delete</a></li>
+              <li><a class="dropdown-item" href="#">Add A Playlist</a>
+                <ul class="dropdown-menu dropdown-submenu dropdown-submenu" aria-labelledby="dropdownMenuButton2">
+                  <li><a class="dropdown-item" href="#">Playlist 1</a></li>
+                  <li><a class="dropdown-item" href="#">Playlist 2</a></li>
+                  <li><a class="dropdown-item" href="#">Playlist 3</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#">Remove From Playlist</a>
+                <ul class="dropdown-menu dropdown-submenu dropdown-submenu" aria-labelledby="dropdownMenuButton3">
+                  <li><a class="dropdown-item" href="#">Playlist 1</a></li>
+                  <li><a class="dropdown-item" href="#">Playlist 2</a></li>
+                  <li><a class="dropdown-item" href="#">Playlist 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </span>
+          <span class="col py-1 border-bottom border-secondary d-flex align-items-center">
+            <p class="test"><%= songs[i].title %></p>
+          </span>
+          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex">
+            <p class="test"><%= songs[i].artist%></p>
+          </span>
+          <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex">
+            <p class="test"><%= songs[i].album%></p>
+          </span>
+          <!-- <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center"><a href="/delete/<%= songs[i]._id %>" title="delete" class="trash"><i class="fa-solid fa-trash py-1 text-light"></i></a></span> -->
         </div>
         <% } %>
       </div>

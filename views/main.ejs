@@ -60,11 +60,17 @@
 
     <div id="scroll " class="songParent pb-5">
       <% for(var i=0; i<songs.length; i++) {%>
-      <div class="songDiv row mx-auto d-flex" onclick="songDivIndex(this)">
+      <div class="songDiv d-flex row mx-auto" onclick="songDivIndex(this)">
         <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center img-fluid d-none d-sm-flex"><img class="trackCoverArt" src="<%= songs[i].imageURL%>" alt="ALbum Cover Art"></span>
-        <span class="col py-1 border-bottom border-secondary d-flex align-items-center"><%= songs[i].title %></span>
-        <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].artist%></span>
-        <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex"><%= songs[i].album%></span>
+        <span class="col py-1 border-bottom border-secondary d-flex align-items-center">
+          <p class="test"><%= songs[i].title %></p>
+        </span>
+        <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex">
+          <p class="test"><%= songs[i].artist%></p>
+        </span>
+        <span class="col py-1 border-bottom border-secondary d-flex align-items-center d-none d-lg-flex">
+          <p class="test"><%= songs[i].album%></p>
+        </span>
         <span class="col-1 py-1 border-bottom border-secondary d-flex justify-content-center align-items-center">
           <% let minutes = Math.floor(songs[i].duration / 60) %>
           <% let seconds = (songs[i].duration - minutes * 60).toFixed() %>
@@ -94,10 +100,10 @@
     <div class="d-flex row justify-content-between text-light mt-1">
       <!-- Track Img & Details -->
       <div class="playerDetails col d-flex d-none d-lg-flex">
-        <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover  d-none d-md-block" id="cover" />
+        <img src="<%= songs[songIndex]?.imageURL || 'https://res.cloudinary.com/drfh0vi5h/image/upload/v1676690365/musicIcon_zjv3ss.jpg'%>" alt="music-cover" class="cover d-none d-md-block" id="cover" />
         <div class="trackDetails d-flex flex-column align-items-start justify-content-center ">
-          <span class="title text-truncate ps-2"><%= songs[songIndex]?.title || 'None' %></span>
-          <span class="artist text-truncate ps-2"><%= songs[songIndex]?.artist || 'None'%></span>
+          <span class="title textTruncate2 ps-2"><%= songs[songIndex]?.title || 'None' %></span>
+          <span class="artist textTruncate2 ps-2"><%= songs[songIndex]?.artist || 'None'%></span>
         </div>
       </div>
 

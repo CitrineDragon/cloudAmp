@@ -38,8 +38,35 @@ button:focus {
   box-shadow: none !important;
 }
 
-/* Accordion */
+/* Manage Dropdown Menus */
+.dropdown-menu li {
+  position: relative;
+}
+.dropdown-menu .dropdown-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+  right: 100%;
+  left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+  display: block;
+}
 
+#dropdownMenuButton::after {
+  content: none;
+}
+
+#dropdownMenuButton1::after {
+  content: none;
+}
+
+/* Manage Dropdown Menus End*/
+
+/* Accordion */
 .accordion-body {
   background-color: black;
   color: #0dcaf0;
@@ -57,6 +84,7 @@ button:focus {
 .accordion-button:not(.collapsed) {
   color: white;
 }
+/* Accordion End */
 
 .displayed {
   display: block;
@@ -113,8 +141,13 @@ button:focus {
 .songParent {
   height: 100%;
   width: 100%;
-  scrollbar-width: none;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.songParent::-webkit-scrollbar {
+  display: none;
 }
 
 .songDiv {
@@ -126,7 +159,7 @@ button:focus {
   cursor: pointer;
 }
 
-.fa-trash:hover {
+.fa-ellipsis-vertical:hover {
   color: #dc3545;
 }
 
@@ -154,8 +187,33 @@ button:focus {
   border-radius: 100%;
 }
 
+.fa-backward:hover,
+.fa-forward:hover {
+  color: #0dcaf0;
+}
+
 .form-range {
   width: 110px;
+}
+
+.songParentOverflow {
+  overflow-y: visible;
+}
+
+.test {
+  display: inline-block;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.textTruncate2 {
+  display: inline-block;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Background Video */
