@@ -20,6 +20,11 @@
   background-color: #0dcaf0;
 }
 
+html {
+  height: 100vh;
+  height: 100dvh;
+}
+
 body {
   background-color: black;
   position: relative;
