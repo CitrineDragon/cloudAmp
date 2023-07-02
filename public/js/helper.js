@@ -14,14 +14,13 @@ let volume = document.querySelector('.form-range');
 let songParent = document.querySelector('.songParent');
 let audio = document.getElementById('audio');
 let mute = document.querySelector('.playerVolume');
+let trackName = document.querySelector('.trackName');
 
 // Keep track of song index
 let songIndex = 0;
 
-// Play song
+// Sets the audio source, cover art source, player info and starts the audio;
 function playSong() {
-  playBtn.querySelector('i.fas').classList.remove('fa-play');
-  playBtn.querySelector('i.fas').classList.add('fa-pause');
   audio.src = songList[songIndex].songURL;
   image.src =
     songList[songIndex]?.imageURL ||
@@ -29,13 +28,13 @@ function playSong() {
   progressBar.setAttribute('aria-valuemax', songList[songIndex].duration);
   title.innerHTML = songList[songIndex]?.title || 'Unknown';
   artist.innerHTML = songList[songIndex]?.artist || 'Unknown';
+  playBtn.querySelector('i.fas').classList.remove('fa-play');
+  playBtn.querySelector('i.fas').classList.add('fa-pause');
   audio.play();
 }
 
 // Pause song
 function pauseSong() {
-  playBtn.querySelector('i.fas').classList.add('fa-play');
-  playBtn.querySelector('i.fas').classList.remove('fa-pause');
   audio.pause();
 }
 
@@ -45,6 +44,8 @@ function playPause() {
     playBtn.querySelector('i.fas').classList.add('fa-pause');
     audio.play();
   } else {
+    playBtn.querySelector('i.fas').classList.remove('fa-pause');
+    playBtn.querySelector('i.fas').classList.add('fa-play');
     pauseSong();
   }
 }
@@ -108,10 +109,6 @@ function progressUpdate(e) {
   audio.currentTime = clickedValue;
 }
 
-function volumeUpdate(e) {
-  audio.volume = e.currentTarget.value / 100;
-}
-
 function songDivIndex(div) {
   const songParent = document.querySelector('.songParent');
   const collection = Array.from(songParent.querySelectorAll('.songDiv'));
@@ -120,15 +117,31 @@ function songDivIndex(div) {
   playSong();
 }
 
+function volumeUpdate(e) {
+  audio.volume = e.currentTarget.value / 100;
+
+  if (e.target.value === '0') {
+    mute.classList.remove('fa-volume-high');
+    mute.classList.add('fa-volume-xmark');
+  } else if (e.target.value > '0') {
+    mute.classList.remove('fa-volume-xmark');
+    mute.classList.add('fa-volume-high');
+  }
+}
+
+let volumeValue;
 function toggleMute() {
   audio.muted = !audio.muted;
 
-  if (mute.classList.contains('fa-volume-high')) {
+  if (audio.muted) {
+    volumeValue = volume.value;
     mute.classList.remove('fa-volume-high');
     mute.classList.add('fa-volume-xmark');
+    volume.value = '0';
   } else {
     mute.classList.remove('fa-volume-xmark');
     mute.classList.add('fa-volume-high');
+    volume.value = volumeValue;
   }
 }
 

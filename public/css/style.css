@@ -20,9 +20,14 @@
   background-color: #0dcaf0;
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
 body {
   background-color: black;
   position: relative;
+  height: -webkit-fill-available;
 }
 
 img {
@@ -190,6 +195,10 @@ button:focus {
 .fa-backward:hover,
 .fa-forward:hover {
   color: #0dcaf0;
+}
+
+.playerVolume:hover {
+  cursor: pointer;
 }
 
 .form-range {
